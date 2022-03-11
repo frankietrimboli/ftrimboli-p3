@@ -43,7 +43,7 @@
 	        <div class="col-md-6">
 	            <div class="thumbnail">
 
-						<img class="poster"  v-bind:src="movie.posters[movie.posterindex]"/>
+						<img class="poster"v-on:click="{{posterClick(index)}}" v-bind:src="movie.posters[movie.posterindex]"/>
 						<div class="imageInfo">Poster{{movie.posterindex+1}}of {{movie.posters.length}}</div>
 
 						<p class="title">{movie.{title}} ({{movie.country}})</p>
@@ -53,8 +53,8 @@
 						<p class="websites">Websites: <a v-bind:href="movie.imdb">IMDB</a> | <a v-bind:href="movie.website">Official</a></p>
 
 			            <div class="social">
-			              <p class="likes"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{movie.likes}}</p>
-			              <p class="dislikes"><i class="fa fa-thumbs-down" aria-hidden="true"></i> {movie.{dislikes}}</p>
+			              <p class="likes" v-on:click="{{like(index)}}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> {{movie.likes}}</p>
+			              <p class="dislikes" v-on:click="{{dislike(index)}}"><i class="fa fa-thumbs-down" aria-hidden="true"></i> {movie.{dislikes}}</p>
 			            </div>
 	            </div>
 	        </div>
