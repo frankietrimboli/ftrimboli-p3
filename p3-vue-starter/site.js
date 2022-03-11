@@ -41,5 +41,69 @@ const vue_app = new Vue({
       },
       methods: {
             /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
+            getMonthText: function(dateArray){
+              var nameOfMonth;
+              var releaseDate;
+
+              switch (dateArray[1]){
+                case 1: monthName='January';
+                break;
+                case 2: monthName= 'February';
+                break;
+                case 3: monthName= 'March';
+                break;
+                case 4: monthName= 'April';
+                break;
+                case 5: monthName= 'May';
+                break;
+                case 6: monthName= 'June';
+                break;
+                case 7: monthName= 'July';
+                break;
+                case 8: monthName= 'August';
+                break;
+                case 9: monthName= 'September';
+                break;
+                case 10: monthName= 'October';
+                break;
+                case 11: monthName= 'November';
+                break;
+                case 12: monthName= 'December';
+                break;
+                default: monthName = 'N/A';
+              }
+              releaseDate= monthName + '' + dateArray[2]+','+ dateArray[0];
+              return releaseDate;
+            },
+
+
+            like: function(index){
+              this.movies[index].likes += 1;
+            },
+
+
+            dislike: function(index){
+              this.movies[index]..dislikes -= 1;
+            },
+
+
+            posterClick: function(index){
+              var currentPosterIndex = this.movies[index].posterindex;
+              var currentPoster = this.movies[index].posters.length -1;
+
+              if(currentPosterIndex < curentPoster){
+                this.movies[index].posterindex += 1;
+              }
+              else{
+                this.movies[index].posteindex = 0;
+              }
+            },
+
+
+            timeText: function(minutes){
+              var hours = Math.floor(minutes/60);
+              var mins = minutes%60;
+              return (hours + "h " + mins + "m");
+            }
       }
 })
