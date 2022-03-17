@@ -21,8 +21,7 @@
 */
 
 
-const vue_app = new Vue({
-      el: '#vue_app',
+const vue_app = Vue.createapp({
       // This automatically imports your movies.json file and puts it into
       //   the variable: movies
       created () {
@@ -30,7 +29,8 @@ const vue_app = new Vue({
                   this.movies = json
             })
       },
-      data: {
+      data() {
+        return {
             // This holds your movies.json data.
             movies: [],
 
@@ -38,72 +38,71 @@ const vue_app = new Vue({
             title: "IMBD + Frank Trimboli's Top 8 Movies",
             owner: "Frank Trimboli",
             github: ''
+          }
       },
       methods: {
             /* ADD FUNCTIONS/METHODS FOR STEP 7 HERE */
-            getMonthText: function(dateArray){
-              var nameOfMonth;
-              var releaseDate;
-
+            getMonthText(dateArray)
+            {
+            let month = ""
               switch (dateArray[1]){
-                case 1: monthName='January';
-                break;
-                case 2: monthName= 'February';
-                break;
-                case 3: monthName= 'March';
-                break;
-                case 4: monthName= 'April';
-                break;
-                case 5: monthName= 'May';
-                break;
-                case 6: monthName= 'June';
-                break;
-                case 7: monthName= 'July';
-                break;
-                case 8: monthName= 'August';
-                break;
-                case 9: monthName= 'September';
-                break;
-                case 10: monthName= 'October';
-                break;
-                case 11: monthName= 'November';
-                break;
-                case 12: monthName= 'December';
-                break;
-                default: monthName = 'N/A';
+                case 1:
+                 month = "January";
+                 break;
+                case 2:
+                  month = "February";
+                  break;
+                case 3:
+                  month = "March";
+                  break;
+                case 4:
+                  month = "April";
+                  break;
+                case 5:
+                  month = "May";
+                  break;
+                case 6:
+                  month = "June";
+                  break;
+                case 7:
+                  month = "July";
+                  break;
+                case 8:
+                  month = "August";
+                  break;
+                case 9:
+                  month = "September";
+                  break;
+                case 10:
+                  month= "October";
+                  break;
+                case 11:
+                  month = "November";
+                  break;
+                case 12:
+                  month = "December";
+                  break;
+                default:
+                  month = "Month";
               }
-              releaseDate= monthName + '' + dateArray[2]+','+ dateArray[0];
-              return releaseDate;
+              return month + " " + dateArray[2] + ", " + dateArray;
             },
 
-
-            like: function(index){
-              this.movies[index].likes += 1;
-            },
-
-
-            dislike: function(index){
-              this.movies[index]..dislikes -= 1;
-            },
-
-
-            posterClick: function(index){
-              var currentPosterIndex = this.movies[index].posterindex;
-              var currentPoster = this.movies[index].posters.length -1;
-
-              if(currentPosterIndex < curentPoster){
-                this.movies[index].posterindex += 1;
-              }
-              else{
-                this.movies[index].posteindex = 0;
+            posterClick(index)
+            {
+              if(this.movies[index].posterindex < this.movies[index].poster.length - 1)
+              {
+                this.movies[index].posterindex++;   }
+                else {
+                  this.movies[index].posterindex = 0;
               }
             },
 
-
-            timeText: function(minutes){
-              var hours = Math.floor(minutes/60);
-              var mins = minutes%60;
-              return (hours + "h " + mins + "m");
+            textTime(minutes)
+            {
+              return Math.trunc(minutes/60) + "h " + (minutes%60) + "m";
             }
       }
 })
+
+vue_app.mount("#vue_app")
