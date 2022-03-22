@@ -37,7 +37,7 @@ const vue_app = Vue.createapp({
             /* ADD ADDITIONAL VARIABLES FOR STEP 3 HERE */
             title: "IMBD + Frank Trimboli's Top 8 Movies",
             owner: "Frank Trimboli",
-            github: ''
+            github: 'https://github.com/m-herbert?tab=repositories'
           }
       },
       methods: {
